@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>James Hartt — Lead Software Engineer</title>
+    <meta name="description" content="Lead Software Engineer practicing agentic engineering. Building production systems across Go, C++, TypeScript, and React with AI-augmented workflows.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #0d1117;
+            --surface: #161b22;
+            --border: #30363d;
+            --text: #e6edf3;
+            --text-secondary: #8b949e;
+            --accent: #58a6ff;
+            --accent-subtle: rgba(88, 166, 255, 0.1);
+            --green: #3fb950;
+            --mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
+        }
+
+        html {
+            font-size: 16px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--mono);
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        main {
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 4rem 1.5rem 6rem;
+        }
+
+        .header {
+            margin-bottom: 3rem;
+        }
+
+        .header h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+
+        .header .title {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            font-weight: 400;
+        }
+
+        .prompt {
+            color: var(--green);
+            user-select: none;
+        }
+
+        section {
+            margin-bottom: 3rem;
+        }
+
+        h2 {
+            font-size: 0.8125rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        p {
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+        }
+
+        p strong {
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.75rem;
+            margin: 1.5rem 0;
+        }
+
+        .stat {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 1rem;
+        }
+
+        .stat-value {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text);
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            display: block;
+            margin-top: 0.125rem;
+        }
+
+        .project {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 1.25rem;
+            margin-bottom: 0.75rem;
+            transition: border-color 0.2s;
+        }
+
+        .project:hover {
+            border-color: var(--accent);
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 0.5rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .project-name {
+            font-size: 0.9375rem;
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        .project-meta {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        .project-desc {
+            font-size: 0.8125rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.75rem;
+            line-height: 1.6;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.375rem;
+        }
+
+        .tag {
+            font-size: 0.6875rem;
+            color: var(--accent);
+            background: var(--accent-subtle);
+            padding: 0.1875rem 0.5rem;
+            border-radius: 3px;
+            white-space: nowrap;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.375rem;
+            margin-top: 0.5rem;
+        }
+
+        .skill {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            border: 1px solid var(--border);
+            padding: 0.25rem 0.625rem;
+            border-radius: 3px;
+        }
+
+        .links {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.875rem;
+            transition: opacity 0.2s;
+        }
+
+        a.project-link {
+            color: inherit;
+            font-size: inherit;
+        }
+
+        a:hover {
+            opacity: 0.8;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 0.5em;
+            height: 1.1em;
+            background: var(--accent);
+            vertical-align: text-bottom;
+            animation: blink 1s step-end infinite;
+            margin-left: 2px;
+        }
+
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+
+        .footer {
+            margin-top: 4rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        @media (max-width: 480px) {
+            main {
+                padding: 2.5rem 1.25rem 4rem;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 1.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <div class="header">
+            <h1><span class="prompt">~</span> James Hartt</h1>
+            <div class="title">Lead Software Engineer | Agentic Engineering<span class="cursor"></span></div>
+        </div>
+
+        <section>
+            <h2>About</h2>
+            <p>
+                I practice <strong>agentic engineering</strong> as my primary development workflow
+                &mdash; orchestrating AI coding agents while owning architecture, product direction,
+                and quality. I barely write code directly anymore, and I ship more than ever.
+            </p>
+            <p>
+                My role is strategic: decomposing problems, writing specifications, directing agent
+                workflows, and critically evaluating output. Strong product sense and high standards
+                for code quality are what separate effective AI-augmented development from AI slop.
+            </p>
+            <p>
+                Previously 10+ years in mobile and iOS engineering. The fundamentals of
+                software craft don't change &mdash; the tools do.
+            </p>
+        </section>
+
+        <section>
+            <h2>Velocity</h2>
+            <div class="stats">
+                <div class="stat">
+                    <span class="stat-value">874</span>
+                    <span class="stat-label">commits at fan3 in 6 months</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value">25%</span>
+                    <span class="stat-label">of team output within 6 months of joining</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value">2 days</span>
+                    <span class="stat-label">to MVP a C++ audio server, solo</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value">5</span>
+                    <span class="stat-label">languages across 3 production codebases</span>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Projects</h2>
+
+            <a href="https://www.fan3.io" class="project-link"><div class="project">
+                <div class="project-header">
+                    <span class="project-name">fan3.io</span>
+                    <span class="project-meta">Sep 2025 &ndash; present &middot; team</span>
+                </div>
+                <div class="project-desc">
+                    Fan engagement platform with NFT distribution, Apple/Google Wallet
+                    integration, and anti-fraud systems. 25% of team output within first
+                    6 months. 94 tickets delivered across 3 production codebases.
+                    Owns security hardening, CI/CD, test infrastructure, and coding standards.
+                </div>
+                <div class="tags">
+                    <span class="tag">Next.js</span>
+                    <span class="tag">React</span>
+                    <span class="tag">TypeScript</span>
+                    <span class="tag">Firebase</span>
+                    <span class="tag">Cloud Functions</span>
+                    <span class="tag">Cypress</span>
+                </div>
+            </div></a>
+
+            <a href="https://github.com/jameshartt/jim-dot-tennis" class="project-link"><div class="project">
+                <div class="project-header">
+                    <span class="project-name">jim.tennis</span>
+                    <span class="project-meta">May 2025 &ndash; present &middot; solo, AI-built</span>
+                </div>
+                <div class="project-desc">
+                    Tennis league management system for Brighton &amp; Hove Parks League.
+                    283 commits, 52K lines of code, 40 database migrations, 146 E2E tests
+                    with accessibility compliance. Built entirely with agentic engineering.
+                </div>
+                <div class="tags">
+                    <span class="tag">Go</span>
+                    <span class="tag">SQLite</span>
+                    <span class="tag">HTMX</span>
+                    <span class="tag">Docker</span>
+                    <span class="tag">Playwright</span>
+                    <span class="tag">PWA</span>
+                </div>
+            </div></a>
+
+            <a href="https://tutti.rocks" class="project-link"><div class="project">
+                <div class="project-header">
+                    <span class="project-name">tutti</span>
+                    <span class="project-meta">Feb 2026 &middot; solo, AI-built</span>
+                </div>
+                <div class="project-desc">
+                    Low-latency (&lt;25ms) browser-based music rehearsal app. Real-time
+                    audio mixing over WebTransport/QUIC with AudioWorklet capture.
+                    C++ server and SvelteKit client &mdash; MVP running in 2 days.
+                </div>
+                <div class="tags">
+                    <span class="tag">C++17</span>
+                    <span class="tag">WebTransport</span>
+                    <span class="tag">WebRTC</span>
+                    <span class="tag">SvelteKit</span>
+                    <span class="tag">QUIC</span>
+                    <span class="tag">AudioWorklet</span>
+                </div>
+            </div></a>
+        </section>
+
+        <section>
+            <h2>Stack</h2>
+            <div class="skills">
+                <span class="skill">Go</span>
+                <span class="skill">C++</span>
+                <span class="skill">TypeScript</span>
+                <span class="skill">React</span>
+                <span class="skill">Next.js</span>
+                <span class="skill">SvelteKit</span>
+                <span class="skill">HTMX</span>
+                <span class="skill">Node.js</span>
+                <span class="skill">Firebase</span>
+                <span class="skill">PostgreSQL</span>
+                <span class="skill">SQLite</span>
+                <span class="skill">Docker</span>
+                <span class="skill">GitHub Actions</span>
+                <span class="skill">WebRTC</span>
+                <span class="skill">WebTransport</span>
+                <span class="skill">Claude Code</span>
+                <span class="skill">GitHub Copilot</span>
+            </div>
+        </section>
+
+        <section>
+            <h2>Links</h2>
+            <div class="links">
+                <a href="https://github.com/jameshartt">github</a>
+                <a href="https://linkedin.com/in/jameshartt">linkedin</a>
+            </div>
+        </section>
+
+        <div class="footer">
+            Built with agentic engineering. Obviously.
+        </div>
+    </main>
+</body>
+</html>
